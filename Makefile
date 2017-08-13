@@ -18,7 +18,7 @@ start/local: $(env)
 start/local/shell:
 	$(NPM) run start -- --name $(name)
 
-deploy/heroku: deploy/heroku/env
+deploy/heroku:
 	git push heroku master
 
 deploy/heroku/env:
