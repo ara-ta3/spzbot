@@ -16,7 +16,7 @@ function shuffle(array) {
 
 module.exports = (robot) => {
     robot.respond(/meshi (.*)$/i, (msg) => {
-        const members = message.match[1].split(/\s+/);
+        const members = msg.match[1].split(/\s+/);
         const n = members.length;
         const shuffled = shuffle(members);
         const teamA = shuffled.slice(0, n/2);

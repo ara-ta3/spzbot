@@ -15,6 +15,9 @@ start/local: $(env)
 	source $< && HUBOT_SLACK_TOKEN=$$HUBOT_SLACK_TOKEN \
 		$(NPM) run start -- --name $(name) --adapter slack
 
+start/local/shell:
+	$(NPM) run start -- --name $(name)
+
 deploy/heroku: deploy/heroku/env
 	git push heroku master
 
