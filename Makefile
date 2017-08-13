@@ -22,8 +22,8 @@ deploy/heroku/env:
 	$(HEROKU) config:push --app $(heroku_app_name) --file $(env)
 
 deploy/heroku/setup: $(HEROKU)
-	$(HEROKU) plugins:install heroku-config
 	$(HEROKU) git:remote --app $(heroku_app_name)
+	$(HEROKU) plugins:install heroku-config
 
 $(HEROKU):
 	which heroku || echo 'please install heroku cli https://devcenter.heroku.com/articles/heroku-cli'
