@@ -12,7 +12,7 @@ install:
 	$(NPM) install
 
 start/local: $(env)
-	source $< && HUBOT_SLACK_TOKEN=$$HUBOT_SLACK_TOKEN \
+	set -o allexport && source $< && \
 		$(NPM) run start -- --name $(name) --adapter slack
 
 start/local/shell:
