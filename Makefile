@@ -1,5 +1,7 @@
 NPM=$(shell which npm)
+DOCKER_COMPOSE=$(shell which docker-compose)
 HEROKU=$(shell which heroku)
+HUBOT=./node_modules/.bin/hubot
 slack_token=
 name=spz
 heroku_app_name=spzbot
@@ -11,9 +13,14 @@ help:
 install:
 	$(NPM) install
 
+start/docker: $(env)
+	set -o allexport && source $< && $(DOCKER_COMPOSE) up
+
+start: $(HUBOT)
+	$(NPM) run start -- --name $(name) --adapter slack
+
 start/local: $(env)
-	set -o allexport && source $< && \
-		$(NPM) run start -- --name $(name) --adapter slack
+	set -o allexport && source $< && $(MAKE) start
 
 start/local/shell:
 	$(NPM) run start -- --name $(name)
@@ -33,3 +40,6 @@ $(HEROKU):
 
 .env:
 	cp -f env.sample $@
+
+$(HUBOT):
+	$(MAKE) install
