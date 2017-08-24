@@ -10,7 +10,7 @@
     "hubot-slack": "^4.3.4"
   },
   "scripts": {
-      "start": "hubot"
+    "start": "hubot"
   },
   "engines": {
     "node": "8.1.x"
